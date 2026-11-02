@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexora Clean Pricing &amp; Profit Toolkit</title>
+<meta name="description" content="Work out your costs, set confident prices, quote clients and review your monthly profit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f3ee; --card:#fdfdfa; --ink:#101a2c; --muted:#5b6578; --line:#e3e4ee;
+  --field:#fdfdfa; --chip:#f3f2ec; --dark:#111c2e; --gold:#8a7a3e; --eyebrow:#8d7d55;
+  --accent:#b9a273; --focus:#c9b27a; --radius:22px;
+  --head:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 20px 56px}
+h1,h2,h3{font-family:var(--head);letter-spacing:-.01em;margin:0}
+.hero{padding:36px 0 26px}
+.hero .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--eyebrow);font-weight:700}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.08;margin:10px 0 12px;max-width:16ch}
+.hero p{color:var(--muted);max-width:62ch;margin:0}
+.card{background:var(--card);border:1px solid #efeee8;border-radius:var(--radius);padding:26px 26px 24px;box-shadow:0 1px 2px rgba(16,26,44,.04),0 8px 24px rgba(16,26,44,.04)}
+.intro{margin-bottom:22px}
+.intro h2{font-size:24px;margin:0 0 6px}
+.intro p{margin:0;color:var(--muted);max-width:78ch}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-bottom:24px}
+.full{margin-bottom:24px}
+.eyebrow{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--eyebrow);font-weight:700;margin-bottom:8px}
+.card h2{font-size:24px;line-height:1.15}
+.sub{color:var(--muted);font-size:14px;margin:8px 0 16px}
+.row{display:grid;gap:12px;margin-bottom:12px}
+.c2{grid-template-columns:1fr 1fr}
+.c3{grid-template-columns:repeat(3,1fr)}
+.f{display:flex;flex-direction:column;gap:5px;min-width:0}
+.f>span{font-size:11.5px;font-weight:700;color:#38425a}
+input,select,textarea{width:100%;font:inherit;font-size:14px;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:12px;padding:9px 12px;height:40px}
+textarea{height:auto;min-height:84px;resize:vertical}
+input::placeholder{color:#9aa1b2}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,.check:focus-within{outline:2px solid var(--focus);outline-offset:1px;border-color:var(--focus)}
+.out{background:var(--chip);border-radius:12px;height:40px;padding:0 12px;display:flex;align-items:center;font-weight:700;font-size:15px}
+.note{font-size:14px;color:var(--muted)}
+.sep{border:0;border-top:1px solid var(--line);margin:4px 0 14px}
+.exp{border-bottom:1px solid var(--line);padding:8px 0 14px;margin-bottom:6px}
+.exp:last-of-type{border-bottom:0}
+.exp h3{font-size:13px;font-family:var(--body);font-weight:700;margin-bottom:6px}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:14px;margin-top:6px;font-weight:700}
+.total b{font-size:16px}
+.bar{background:var(--dark);color:#fff;border-radius:14px;padding:16px 14px;display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.bar b{font-size:15px}
+.item{border-top:1px solid var(--line);padding-top:12px;margin-top:4px}
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.svc .box{border:1px solid var(--line);border-radius:16px;padding:16px 14px 14px}
+.svc h3{font-family:var(--body);font-size:14.5px;font-weight:700;margin-bottom:10px}
+.price{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);padding-top:12px;margin-top:2px;font-weight:700}
+.price b{color:var(--gold);font-size:17px}
+.callout{margin-top:18px;background:var(--chip);border-left:4px solid var(--accent);border-radius:6px;padding:16px 18px}
+.callout h3{font-size:17px;margin-bottom:4px}
+.callout p{margin:0;color:var(--muted);font-size:14px}
+.accept{color:var(--muted);font-size:14px;margin:14px 0}
+.btn{font:inherit;font-weight:700;font-size:14px;background:var(--dark);color:#fff;border:0;border-radius:10px;padding:10px 16px;cursor:pointer}
+.btn:hover{background:#1c2b47}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid #cfd2de}
+.btn.ghost:hover{background:var(--chip)}
+.review{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.profit{background:var(--dark);color:#fff;border-radius:16px;padding:18px 18px 20px;margin:14px 0 10px}
+.profit small{display:block;color:#e2c88c;font-size:13px;margin-bottom:2px}
+.profit strong{font-family:var(--head);font-size:36px;letter-spacing:-.01em}
+.profit.neg strong{color:#ffb4a8}
+.target{font-size:12.5px;color:#4d6a96;margin:0 0 14px}
+#chart{width:100%;height:auto;display:block}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.check{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;font-size:14px;background:var(--field)}
+.check input{width:18px;height:18px;margin:0;flex:none;accent-color:var(--dark)}
+.actions{display:flex;gap:12px;align-items:center;margin-top:18px;flex-wrap:wrap}
+#status{font-size:13px;color:var(--muted)}
+footer{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:2px solid #e6e5de;margin-top:36px;padding-top:18px;color:#6b7385;font-size:13.5px}
+footer strong{letter-spacing:.02em}
+@media (max-width:860px){
+  .grid2,.svc,.review,.checks{grid-template-columns:1fr}
+  .card{padding:22px 18px}
+}
+@media (max-width:520px){
+  .c3{grid-template-columns:1fr 1fr}
+  .c3 .f:nth-child(3){grid-column:1/-1}
+}
+@media print{
+  body.print-quote{background:#fff}
+  body.print-quote .hero,body.print-quote .intro,body.print-quote footer,
+  body.print-quote .card:not(#quote),body.print-quote .grid2>.card:not(#quote),
+  body.print-quote .full,body.print-quote .print-hide{display:none!important}
+  body.print-quote .grid2{display:block;margin:0}
+  body.print-quote #quote{box-shadow:none;border:0;padding:0}
+  body.print-quote input,body.print-quote textarea{border-color:#bbb}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">Nexora Clean</div>
+    <h1>Pricing &amp; Profit Toolkit</h1>
+    <p>Work out what each job really costs, price with a margin you chose, send a clear quotation and check your profit at month end.</p>
+  </header>
+
+  <section class="card intro" aria-labelledby="intro-h">
+    <div class="eyebrow">The working companion</div>
+    <h2 id="intro-h">From costs to a considered price</h2>
+    <p>Use your own business figures throughout. This page calculates estimates as you type and complements your editable workbook; it does not change the workbook itself. Enter costs in your chosen currency, review assumptions, and save your worksheet when ready.</p>
+  </section>
+
+  <div class="grid2">
+    <section class="card" aria-labelledby="s1">
+      <div class="eyebrow">01 / Foundation</div>
+      <h2 id="s1">Business profile</h2>
+      <div class="row c2" style="margin-top:16px">
+        <label class="f"><span>Business name</span><input id="bizName" type="text" autocomplete="organization"></label>
+        <label class="f"><span>Business location</span><input id="bizLoc" type="text"></label>
+      </div>
+      <div class="row">
+        <label class="f"><span>Contact details</span><input id="bizContact" type="text" placeholder="Email or telephone"></label>
+      </div>
+      <div class="row c2">
+        <label class="f"><span>Display currency</span>
+          <select id="currency">
+            <option value="ZAR">ZAR · South African rand</option>
+            <option value="USD">USD · US dollar</option>
+            <option value="GBP">GBP · British pound</option>
+            <option value="EUR">EUR · Euro</option>
+            <option value="AUD">AUD · Australian dollar</option>
+          </select>
+        </label>
+        <label class="f"><span>Monthly revenue target</span><input id="target" type="number" min="0" step="any" inputmode="decimal"></label>
+      </div>
+      <p class="note">Changing currency changes the symbol and formatting only. It does not convert previously entered figures.</p>
+    </section>
+
+    <section class="card" aria-labelledby="s2">
+      <div class="eyebrow">02 / Overheads</div>
+      <h2 id="s2">Monthly operating expenses</h2>
+      <p class="sub">Record planned and actual monthly amounts. The total uses actual amounts only; do not include the same cost again in direct costs.</p>
+      <div id="overheads"></div>
+      <div class="total"><span>Actual monthly overheads</span><b id="ohTotal">–</b></div>
+    </section>
+  </div>
+
+  <div class="grid2">
+    <section class="card" aria-labelledby="s3">
+      <div class="eyebrow">03 / Direct costs</div>
+      <h2 id="s3">Cleaning supplies per job</h2>
+      <p class="sub">Assumption: purchase cost ÷ units purchased × units used on one job. Use the same unit for purchased and used quantities.</p>
+      <div id="supplies"></div>
+      <div class="total"><span>Total supplies per job</span><b id="supTotal">–</b></div>
+    </section>
+
+    <section class="card" aria-labelledby="s4">
+      <div class="eyebrow">04 / People</div>
+      <h2 id="s4">Labour cost calculator</h2>
+      <p class="sub">Assumption: (hourly wage + additional employer cost per hour) × job hours × number of cleaners. Include applicable employer costs in your own estimate.</p>
+      <div class="row c2">
+        <label class="f"><span>Hourly wage per cleaner</span><input id="wage" type="number" min="0" step="any" inputmode="decimal"></label>
+        <label class="f"><span>Additional employer cost per cleaner / hour</span><input id="extra" type="number" min="0" step="any" inputmode="decimal"></label>
+      </div>
+      <div class="row c2">
+        <label class="f"><span>Job duration (hours)</span><input id="hours" type="number" min="0" step="any" inputmode="decimal"></label>
+        <label class="f"><span>Number of cleaners</span><input id="cleaners" type="number" min="0" step="any" inputmode="decimal"></label>
+      </div>
+      <div class="bar"><span>Estimated labour per job</span><b id="labourOut">–</b></div>
+    </section>
+  </div>
+
+  <section class="card full" aria-labelledby="s5">
+    <div class="eyebrow">05 / Price with intention</div>
+    <h2 id="s5">Service pricing worksheet</h2>
+    <p class="sub">Enter costs for each service and the margin you want to model. Suggested price = total estimated cost ÷ (1 − desired margin ÷ 100). Transfer your labour and supplies estimates where applicable; they are not added automatically. For a recurring contract, enter costs for the same billing period you intend to price.</p>
+    <div class="svc" id="services"></div>
+    <div class="callout">
+      <h3>Margin is not markup</h3>
+      <p>Illustrative example, in any currency: a cost of 100 with a 25% markup sells for 125, giving a 20% margin. For a 25% margin, the selling price is 100 ÷ 0.75 = 133.33 (rounded). These are examples, not business performance figures.</p>
+    </div>
+  </section>
+
+  <div class="grid2">
+    <section class="card" id="quote" aria-labelledby="s6">
+      <div class="eyebrow">06 / Client-ready</div>
+      <h2 id="s6">Customer quotation</h2>
+      <p class="sub">Enter the agreed scope and your actual quoted prices. This quotation does not automatically copy suggested service prices; check taxes and terms before sending.</p>
+      <div class="row c2">
+        <label class="f"><span>Customer name</span><input id="qName" type="text"></label>
+        <label class="f"><span>Quotation date</span><input id="qDate" type="date"></label>
+      </div>
+      <div class="row c2">
+        <label class="f"><span>Valid until</span><input id="qValid" type="date"></label>
+        <label class="f"><span>Reference</span><input id="qRef" type="text"></label>
+      </div>
+      <div class="row">
+        <label class="f"><span>Scope of work / address</span><textarea id="qScope"></textarea></label>
+      </div>
+      <div id="qLines"></div>
+      <div class="total"><span>Quotation total</span><b id="qTotal">–</b></div>
+      <div class="row" style="margin-top:12px">
+        <label class="f"><span>Exclusions / terms</span><textarea id="qTerms"></textarea></label>
+      </div>
+      <p class="accept">Acceptance: Customer name / signature ______________________ &nbsp; Date __________</p>
+      <button class="btn print-hide" id="printQuote" type="button">Print quotation</button>
+    </section>
+
+    <section class="card" aria-labelledby="s7">
+      <div class="eyebrow">07 / Predictable work</div>
+      <h2 id="s7">Recurring client revenue</h2>
+      <p class="sub">Enter expected visits per month yourself. Monthly estimate = visits per month × fee per visit; this is not a guarantee or an automatic input to the monthly review.</p>
+      <div id="clients"></div>
+      <div class="total"><span>Estimated monthly recurring revenue</span><b id="recTotal">–</b></div>
+    </section>
+  </div>
+
+  <section class="card full" aria-labelledby="s8">
+    <div class="eyebrow">08 / Monthly review</div>
+    <h2 id="s8">Monthly sales &amp; profit review</h2>
+    <p class="sub">Use figures for the same month. Estimated profit = revenue − direct costs − overheads. This simplified estimate excludes taxes and any costs you have not entered.</p>
+    <div class="review">
+      <div>
+        <div class="row c3">
+          <label class="f"><span>Monthly revenue</span><input id="rev" type="number" min="0" step="any" inputmode="decimal"></label>
+          <label class="f"><span>Monthly direct costs</span><input id="dc" type="number" min="0" step="any" inputmode="decimal"></label>
+          <label class="f"><span>Monthly overheads</span><input id="oh" type="number" min="0" step="any" inputmode="decimal"></label>
+        </div>
+        <div class="profit" id="profitBox"><small>Estimated monthly profit</small><strong id="profit">–</strong></div>
+        <p class="target" id="targetNote">Enter a monthly revenue target to compare progress.</p>
+        <label class="f"><span>Observations and next actions</span><textarea id="obs"></textarea></label>
+      </div>
+      <svg id="chart" viewBox="0 0 420 220" role="img" aria-label="Bar chart of monthly revenue, direct costs and overheads"></svg>
+    </div>
+  </section>
+
+  <section class="card full" aria-labelledby="s9">
+    <div class="eyebrow">09 / Keep moving</div>
+    <h2 id="s9">Practical growth checklist</h2>
+    <p class="sub">A short routine for reviewing costs, following up with customers and deciding what to improve next. Tick actions as you complete them, then save.</p>
+    <div class="checks" id="checks"></div>
+    <div class="actions print-hide">
+      <button class="btn" id="save" type="button">Save worksheet</button>
+      <button class="btn ghost" id="clear" type="button">Clear worksheet</button>
+      <span id="status" role="status" aria-live="polite">Your entries are saved in this browser only.</span>
+    </div>
+  </section>
+
+  <footer>
+    <strong>NEXORA WORKS · NEXORA CLEAN</strong>
+    <span>Planning estimates only · Review your figures before quoting</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var KEY='nexora-clean-toolkit-v1';
+  var LOCALES={ZAR:'en-ZA',USD:'en-US',GBP:'en-GB',EUR:'en-IE',AUD:'en-AU'};
+  var $=function(id){return document.getElementById(id)};
+  var num=function(id){var n=parseFloat($(id).value);return isFinite(n)?n:0};
+  var fmt=function(n){
+    var c=$('currency').value||'ZAR';
+    try{return new Intl.NumberFormat(LOCALES[c]||'en-ZA',{style:'currency',currency:c}).format(n)}
+    catch(e){return n.toFixed(2)}
+  };
+  var NUM=' type="number" min="0" step="any" inputmode="decimal"';
+  var field=function(id,label,type){
+    return '<label class="f"><span>'+label+'</span><input id="'+id+'"'+(type==='date'?' type="date"':type==='text'?' type="text"':NUM)+'></label>';
+  };
+
+  /* ---- build repeated blocks ---- */
+  var OH=['Rent','Insurance','Equipment','Marketing','Transport','Subscriptions','Wages','Other'];
+  $('overheads').innerHTML=OH.map(function(n,i){
+    return '<div class="exp"><h3>'+n+'</h3><div class="row c3" style="margin:0">'+
+      field('ohP'+i,'Planned')+field('ohA'+i,'Actual')+field('ohN'+i,'Notes','text')+'</div></div>';
+  }).join('');
+
+  var SUP=4;
+  var sup='';
+  for(var i=0;i<SUP;i++){
+    sup+='<div class="'+(i?'item':'')+'"><div class="row c3" style="margin-bottom:12px">'+
+      field('spN'+i,'Product '+(i+1),'text')+field('spC'+i,'Purchase cost')+field('spU'+i,'Units purchased')+'</div>'+
+      '<div class="row c3" style="margin-bottom:14px">'+field('spX'+i,'Units used per job')+
+      '<div class="f"><span>Cost per job</span><div class="out" id="spO'+i+'">–</div></div></div></div>';
+  }
+  $('supplies').innerHTML=sup;
+
+  var SERV=[['res','Residential cleaning'],['deep','Deep cleaning'],['move','Move-in / move-out'],['off','Office cleaning'],['rec','Recurring contract']];
+  $('services').innerHTML=SERV.map(function(s){
+    var k=s[0];
+    return '<div class="box"><h3>'+s[1]+'</h3>'+
+      '<div class="row c3">'+field(k+'L','Labour')+field(k+'S','Supplies')+field(k+'T','Transport')+'</div>'+
+      '<div class="row c3">'+field(k+'O','Allocated overhead')+field(k+'M','Desired margin (%)')+
+      '<div class="f"><span>Estimated cost</span><div class="out" id="'+k+'E">–</div></div></div>'+
+      '<div class="price"><span>Suggested selling price</span><b id="'+k+'P">–</b></div></div>';
+  }).join('');
+
+  $('qLines').innerHTML=[1,2].map(function(n,i){
+    return '<div class="'+(i?'item':'item')+'"><div class="row c3" style="margin-bottom:12px">'+
+      field('qS'+n,'Service / line '+n,'text')+field('qQ'+n,'Quantity')+field('qP'+n,'Unit price')+'</div>'+
+      '<div class="row c3" style="margin-bottom:12px"><div class="f"><span>Line total</span><div class="out" id="qT'+n+'">–</div></div></div></div>';
+  }).join('');
+
+  $('clients').innerHTML=[1,2,3].map(function(n,i){
+    return '<div class="'+(i?'item':'')+'"><div class="row c3" style="margin-bottom:12px">'+
+      field('cN'+n,'Client '+n,'text')+field('cV'+n,'Visits / month')+field('cF'+n,'Fee / visit')+'</div>'+
+      '<div class="row c3" style="margin-bottom:14px">'+field('cD'+n,'Follow-up date','date')+
+      '<div class="f"><span>Monthly estimate</span><div class="out" id="cE'+n+'">–</div></div></div></div>';
+  }).join('');
+
+  var TASKS=['Review actual costs each month','Check supply usage on typical jobs','Revisit labour and employer costs','Confirm margin before sending quotes','Follow up on outstanding quotations','Review recurring-client renewal dates','Compare monthly revenue with costs','Choose one growth action for next month'];
+  $('checks').innerHTML=TASKS.map(function(t,i){
+    return '<label class="check"><input type="checkbox" id="ck'+i+'"><span>'+t+'</span></label>';
+  }).join('');
+
+  /* ---- calculations ---- */
+  function niceStep(raw){
+    var p=Math.pow(10,Math.floor(Math.log10(raw))),f=raw/p;
+    return (f<=1?1:f<=2?2:f<=5?5:10)*p;
+  }
+  function chart(vals){
+    var labels=['Revenue','Direct costs','Overheads'];
+    var max=Math.max.apply(null,vals),empty=max<=0;
+    var top,step;
+    if(empty){top=1;step=.1}else{step=niceStep(max/5);top=Math.ceil(max/step)*step}
+    var L=64,R=410,T=14,B=186,W=R-L,H=B-T,s='';
+    var n=Math.round(top/step);
+    for(var i=0;i<=n;i++){
+      var v=i*step,y=B-(v/top)*H;
+      var lab=empty?v.toFixed(1).replace(/\.0$/,''):new Intl.NumberFormat('en-ZA').format(+v.toFixed(2));
+      s+='<line x1="'+L+'" x2="'+R+'" y1="'+y+'" y2="'+y+'" stroke="#e3e4ee"/>'+
+         '<text x="'+(L-8)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#6b7385">'+lab+'</text>';
+    }
+    var cw=W/3,colors=['#111c2e','#b9a273','#8a96ad'];
+    vals.forEach(function(v,i){
+      var x=L+cw*i,h=(Math.max(v,0)/top)*H,bw=cw*.5;
+      s+='<line x1="'+x+'" x2="'+x+'" y1="'+T+'" y2="'+B+'" stroke="#e3e4ee"/>';
+      if(h>0)s+='<rect x="'+(x+(cw-bw)/2)+'" y="'+(B-h)+'" width="'+bw+'" height="'+h+'" rx="4" fill="'+colors[i]+'"/>';
+      s+='<text x="'+(x+cw/2)+'" y="'+(B+20)+'" text-anchor="middle" font-size="12" fill="#5b6578">'+labels[i]+'</text>';
+    });
+    s+='<line x1="'+R+'" x2="'+R+'" y1="'+T+'" y2="'+B+'" stroke="#e3e4ee"/>';
+    $('chart').innerHTML=s;
+  }
+  function calc(){
+    var t=0,i,k;
+    for(i=0;i<OH.length;i++)t+=num('ohA'+i);
+    $('ohTotal').textContent=fmt(t);
+
+    var st=0;
+    for(i=0;i<SUP;i++){
+      var pu=num('spU'+i),c=pu>0?num('spC'+i)/pu*num('spX'+i):0;
+      st+=c;$('spO'+i).textContent=fmt(c);
+    }
+    $('supTotal').textContent=fmt(st);
+
+    $('labourOut').textContent=fmt((num('wage')+num('extra'))*num('hours')*num('cleaners'));
+
+    SERV.forEach(function(s){
+      k=s[0];
+      var cost=num(k+'L')+num(k+'S')+num(k+'T')+num(k+'O'),m=num(k+'M');
+      $(k+'E').textContent=fmt(cost);
+      $(k+'P').textContent=m<100?fmt(cost/(1-m/100)):'Margin must be below 100%';
+    });
+
+    var qt=0;
+    [1,2].forEach(function(n){var l=num('qQ'+n)*num('qP'+n);qt+=l;$('qT'+n).textContent=fmt(l)});
+    $('qTotal').textContent=fmt(qt);
+
+    var rt=0;
+    [1,2,3].forEach(function(n){var e=num('cV'+n)*num('cF'+n);rt+=e;$('cE'+n).textContent=fmt(e)});
+    $('recTotal').textContent=fmt(rt);
+
+    var rev=num('rev'),dc=num('dc'),oh=num('oh'),p=rev-dc-oh;
+    $('profit').textContent=fmt(p);
+    $('profitBox').classList.toggle('neg',p<0);
+    var tg=num('target');
+    $('targetNote').textContent=tg>0
+      ? (rev>0?'Revenue is '+Math.round(rev/tg*100)+'% of your monthly target of '+fmt(tg)+'.':'Monthly revenue target: '+fmt(tg)+'. Enter this month’s revenue to compare progress.')
+      : 'Enter a monthly revenue target to compare progress.';
+    chart([rev,dc,oh]);
+  }
+
+  /* ---- save / restore ---- */
+  var fields=function(){return Array.prototype.slice.call(document.querySelectorAll('.wrap input,.wrap select,.wrap textarea'))};
+  function save(){
+    var d={};
+    fields().forEach(function(el){if(el.id)d[el.id]=el.type==='checkbox'?el.checked:el.value});
+    try{localStorage.setItem(KEY,JSON.stringify(d));return true}catch(e){return false}
+  }
+  function load(){
+    try{
+      var d=JSON.parse(localStorage.getItem(KEY)||'{}');
+      fields().forEach(function(el){
+        if(el.id in d){if(el.type==='checkbox')el.checked=!!d[el.id];else el.value=d[el.id]}
+      });
+    }catch(e){}
+  }
+  var timer;
+  document.addEventListener('input',function(){calc();clearTimeout(timer);timer=setTimeout(save,500)});
+  document.addEventListener('change',function(){calc();save()});
+  $('save').addEventListener('click',function(){
+    $('status').textContent=save()?'Worksheet saved in this browser.':'Could not save. Your browser may be blocking storage.';
+  });
+  $('clear').addEventListener('click',function(){
+    if(!confirm('Clear every entry on this worksheet? This cannot be undone.'))return;
+    fields().forEach(function(el){if(el.type==='checkbox')el.checked=false;else if(el.tagName==='SELECT')el.value='ZAR';else el.value=''});
+    try{localStorage.removeItem(KEY)}catch(e){}
+    calc();$('status').textContent='Worksheet cleared.';
+  });
+  $('printQuote').addEventListener('click',function(){
+    document.body.classList.add('print-quote');
+    window.print();
+  });
+  window.addEventListener('afterprint',function(){document.body.classList.remove('print-quote')});
+
+  load();calc();
+})();
+</script>
+</body>
+</html>
