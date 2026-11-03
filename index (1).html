@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nexora Beauty Salon Pricing &amp; Profit Toolkit</title>
+<meta name="description" content="Price your services smarter. Understand your costs. Grow your salon profitably.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#111d33; --navy2:#1a2a47; --gold:#c9a96e; --bg:#f5f4ee; --card:#fdfdfa;
+  --ink:#111d33; --muted:#5d6678; --line:#e6e3da; --field:#ddd9cf; --chip:#f0ebe4;
+  --red:#8b2e3b; --serif:"Fraunces",Georgia,"Times New Roman",serif; --sans:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{color-scheme:light;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;letter-spacing:-.005em}
+header.top{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+header.top::before,header.top::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.07);pointer-events:none}
+header.top::before{width:620px;height:620px;right:-250px;top:-220px}
+header.top::after{width:420px;height:420px;right:-150px;top:-120px;background:rgba(255,255,255,.025)}
+.hwrap{max-width:1280px;margin:0 auto;padding:0 30px;position:relative;z-index:1}
+.brandrow{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:22px;font-size:14px}
+.brandrow b{color:var(--gold);letter-spacing:.17em;font-size:14px}
+.hero{padding:34px 0 40px}
+.kicker{font-size:14px;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.hero h1{font-size:clamp(28px,4.4vw,36px);color:#fff;margin:22px 0 14px;line-height:1.15}
+.hero p{margin:0;font-size:15px}
+.hero .tag{color:var(--gold);margin-top:28px}
+nav.tabs{border-top:1px solid rgba(255,255,255,.14);background:var(--navy);position:sticky;top:0;z-index:20}
+nav.tabs .hwrap{display:flex;gap:0;overflow-x:auto;scrollbar-width:none}
+nav.tabs button{font:inherit;font-size:13px;font-weight:700;color:#e8ebf2;background:none;border:0;border-bottom:3px solid transparent;padding:17px 9px 14px;margin-right:12px;white-space:nowrap;cursor:pointer}
+nav.tabs button:hover{color:#fff}
+nav.tabs button[aria-selected="true"]{color:var(--gold);border-bottom-color:var(--gold)}
+nav.tabs button:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+main{max-width:1280px;margin:0 auto;padding:44px 30px 30px}
+.panel[hidden]{display:none}
+.eyebrow{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+.panel>h2{font-size:24px;margin-bottom:8px}
+.lede{color:var(--muted);margin:0 0 24px;font-size:14.5px}
+.card{background:var(--card);border:1px solid #f0eee7;border-radius:20px;padding:32px;margin-bottom:28px;box-shadow:0 1px 2px rgba(17,29,51,.03),0 10px 30px rgba(17,29,51,.04)}
+.card h3{font-size:18px;margin-bottom:6px}
+.card .sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.f{display:flex;flex-direction:column;gap:6px;min-width:0;margin-bottom:6px}
+.f>span,.f>label{font-size:12px;font-weight:700;color:#3a445a}
+input,select,textarea{width:100%;font:inherit;font-size:14.5px;color:var(--ink);background:var(--card);border:1px solid var(--field);border-radius:10px;padding:11px 12px;height:46px}
+textarea{height:auto;min-height:96px;resize:vertical;line-height:1.5}
+input::placeholder,textarea::placeholder{color:#9ba1ae}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.stats{display:grid;gap:20px;margin-bottom:28px}
+.stats.s3{grid-template-columns:repeat(3,1fr)}
+.stats.s4{grid-template-columns:repeat(4,1fr)}
+.stat{border-left:3px solid var(--gold);padding:16px 18px 10px}
+.stat span{display:block;font-size:15.5px}
+.stat strong{display:block;font-family:var(--serif);font-weight:600;font-size:26px;margin-top:10px;line-height:1.2}
+.note{background:var(--chip);border-left:3px solid var(--gold);border-radius:4px;padding:16px 18px;font-size:12.8px;margin:0 0 28px}
+.hint{font-size:12.3px;color:var(--muted);margin:14px 0 0}
+.cardhead{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:22px}
+.cardhead h3{margin:0}
+.btn{font:inherit;font-weight:700;font-size:13px;background:var(--card);color:var(--ink);border:2px solid var(--navy);border-radius:10px;padding:10px 14px;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--navy);color:#fff}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.rm{font:inherit;font-weight:700;font-size:12px;background:none;border:0;color:var(--red);cursor:pointer;padding:6px}
+.rm:hover{text-decoration:underline}
+.tw{overflow-x:auto;scrollbar-width:thin}
+table{border-collapse:collapse;width:100%}
+th{background:var(--chip);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;text-align:left;padding:12px 10px;white-space:nowrap}
+td{padding:7px 4px;border-bottom:1px solid var(--line);vertical-align:middle}
+td input{height:38px;padding:8px 10px;font-size:13.5px;border-radius:9px;min-width:64px}
+td.out{font-size:14.5px;padding-left:10px;white-space:nowrap}
+.tbl-exp td:nth-child(1),.tbl-exp td:nth-child(2){padding-right:12px}
+.svc{min-width:1480px}
+.svc td:nth-child(1) input{min-width:130px}
+.svc td:nth-child(2) input{min-width:150px}
+.txt{font-size:14.5px}
+.comms{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.msg{border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;background:var(--card)}
+.msg h4{font-family:var(--sans);font-size:15px;margin:0 0 8px}
+.msg p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.checks{margin:6px 0 0;padding:0;list-style:none}
+.checks li{border-bottom:1px solid var(--line);padding:11px 0}
+.checks label{display:flex;gap:10px;align-items:center;font-weight:700;font-size:13px;color:#3a445a;cursor:pointer}
+.checks input{width:19px;height:19px;min-width:0;margin:0;accent-color:var(--navy);padding:0;flex:none}
+.prog{font-weight:700;font-size:14px;margin:16px 0 0}
+footer{max-width:1280px;margin:0 auto;padding:10px 30px 56px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.reset{font:inherit;font-size:12.5px;color:var(--muted);background:none;border:0;text-decoration:underline;cursor:pointer}
+@media (max-width:900px){
+  .grid3,.stats.s3,.stats.s4,.cols2,.grid2,.comms{grid-template-columns:1fr}
+  .card{padding:22px 18px}
+  main{padding:30px 16px 20px}
+  .hwrap{padding:0 16px}
+  footer{padding:10px 16px 40px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="hwrap">
+    <div class="brandrow"><b>NEXORA WORKS / NEXORA BEAUTY</b><span>Stronger Salons Brighter Businesses</span></div>
+    <div class="hero">
+      <div class="kicker">The Interactive Business Workbook</div>
+      <h1>Salon Pricing &amp; Profit Toolkit</h1>
+      <p>Price your services smarter. Understand your costs. Grow your salon profitably.</p>
+      <p class="tag">Beauty Builds Confidence · Business Creates Freedom</p>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Toolkit sections">
+    <div class="hwrap" role="tablist">
+      <button role="tab" data-t="profile" aria-selected="true">01 / Profile</button>
+      <button role="tab" data-t="costs" aria-selected="false">02 / Costs</button>
+      <button role="tab" data-t="pricing" aria-selected="false">03 / Pricing</button>
+      <button role="tab" data-t="bookings" aria-selected="false">04 / Bookings</button>
+      <button role="tab" data-t="growth" aria-selected="false">05 / Growth</button>
+      <button role="tab" data-t="review" aria-selected="false">06 / Review</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<!-- 01 PROFILE -->
+<section class="panel" id="p-profile">
+  <div class="eyebrow">01 / Foundation</div>
+  <h2>Build your business profile</h2>
+  <p class="lede">Start with your business identity and a clear monthly revenue goal.</p>
+
+  <div class="card">
+    <h3>Salon details</h3>
+    <div class="grid3" style="margin-top:18px">
+      <div class="f"><span>Salon name</span><input data-f="salonName" type="text" placeholder="Your salon's name"></div>
+      <div class="f"><span>Location</span><input data-f="location" type="text" placeholder="City or area"></div>
+      <div class="f"><span>Business contact / website</span><input data-f="contact" type="text" placeholder="Your public contact details"></div>
+      <div class="f"><span>Services offered</span><input data-f="servicesOffered" type="text" placeholder="e.g. Hair, nails, brows"></div>
+      <div class="f"><span>Target clientele</span><input data-f="clientele" type="text" placeholder="Who do you serve?"></div>
+      <div class="f"><span>Currency</span>
+        <select id="currency" data-f="currency">
+          <option value="ZAR">ZAR — South African rand</option>
+          <option value="USD">USD — US dollar</option>
+          <option value="GBP">GBP — British pound</option>
+          <option value="EUR">EUR — Euro</option>
+          <option value="AUD">AUD — Australian dollar</option>
+        </select>
+      </div>
+      <div class="f"><span>Monthly revenue goal</span><input data-f="goal" type="number" min="0" step="any" inputmode="decimal"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Your brand kit</h3>
+    <p class="sub">Record your visual direction and voice. Add or replace your salon logo in your own brand materials.</p>
+    <div class="grid2" style="margin-top:18px">
+      <div class="f"><span>Logo / logo notes</span><input data-f="logo" type="text" placeholder="Describe your logo or where it is stored"></div>
+      <div class="f"><span>Brand colours</span><input data-f="colours" type="text" placeholder="e.g. navy, cream, brass"></div>
+      <div class="f"><span>Brand fonts</span><input data-f="fonts" type="text" placeholder="Heading and body fonts"></div>
+      <div class="f"><span>Tagline</span><input data-f="tagline" type="text" placeholder="Your salon's tagline"></div>
+      <div class="f"><span>Website / social handles</span><input data-f="handles" type="text" placeholder="Public URLs or handles"></div>
+      <div class="f"><span>Brand personality</span><input data-f="personality" type="text" placeholder="e.g. calming, expert, welcoming"></div>
+    </div>
+  </div>
+
+  <p class="note"><b>How to use this toolkit:</b> Enter your actual costs, price each service, record completed bookings, then revisit your results monthly. The original Canva workbook does not automatically calculate. This interactive page calculates estimates while you use it; a companion Excel or Google Sheets calculator can be used for spreadsheet formulas. Changing currency changes the symbol only—it does not convert amounts. Review every figure after switching currencies.</p>
+</section>
+
+<!-- 02 COSTS -->
+<section class="panel" id="p-costs" hidden>
+  <div class="eyebrow">02 / The numbers</div>
+  <h2>Know what every service costs</h2>
+  <p class="lede">Track monthly overhead, product usage, and time before setting a price.</p>
+
+  <div class="stats s3">
+    <div class="stat"><span>Monthly operating expenses</span><strong id="stExp">–</strong></div>
+    <div class="stat"><span>Estimated overhead / booking</span><strong id="stOH">–</strong></div>
+    <div class="stat"><span>Labour cost / hour</span><strong id="stLab">–</strong></div>
+  </div>
+
+  <div class="card">
+    <div class="cardhead"><h3>Monthly expense tracker</h3><button class="btn" data-add="expenses">+ Add expense</button></div>
+    <div class="tw"><table class="tbl-exp">
+      <thead><tr><th style="width:44%">Expense</th><th style="width:36%">Monthly amount</th><th>Action</th></tr></thead>
+      <tbody id="b-expenses"></tbody>
+    </table></div>
+    <p class="hint">Include regular operating costs here. Booking-level materials belong in direct costs below; avoid counting the same purchase twice.</p>
+  </div>
+
+  <div class="card">
+    <div class="cardhead"><h3>Product &amp; consumable costing</h3><button class="btn" data-add="products">+ Add product</button></div>
+    <div class="tw"><table style="min-width:760px">
+      <thead><tr><th>Product</th><th>Purchase price</th><th>Usable quantity</th><th>Units used / service</th><th>Cost / service</th><th>Action</th></tr></thead>
+      <tbody id="b-products"></tbody>
+    </table></div>
+    <p class="hint">Keep quantity and usage in the same unit (for example, both millilitres). Cost per service = purchase price ÷ usable quantity × units used.</p>
+  </div>
+
+  <div class="card">
+    <h3>Time &amp; labour assumptions</h3>
+    <p class="sub">These two figures feed the Pricing section. Use your own numbers.</p>
+    <div class="grid2" style="margin-top:14px">
+      <div class="f"><span>Labour cost per hour</span><input data-f="labourRate" type="number" min="0" step="any" inputmode="decimal" value="120"></div>
+      <div class="f"><span>Expected bookings per month (to spread overhead)</span><input data-f="bookingsPM" type="number" min="0" step="any" inputmode="decimal" value="100"></div>
+    </div>
+    <p class="hint">Estimated overhead per booking = monthly operating expenses ÷ expected bookings per month. Labour per service = (treatment + prep + clean minutes) ÷ 60 × labour cost per hour.</p>
+  </div>
+</section>
+
+<!-- 03 PRICING -->
+<section class="panel" id="p-pricing" hidden>
+  <div class="eyebrow">03 / Price with purpose</div>
+  <h2>Service pricing worksheet</h2>
+  <p class="lede">Build a price from direct product costs, staff time, commission, overhead, and your target margin.</p>
+  <p class="note">Suggested price = estimated total cost ÷ (1 − target profit margin). This is an illustrative planning estimate, not a guaranteed net margin. Check market positioning, demand, and your real costs before publishing prices.</p>
+
+  <div class="card">
+    <div class="cardhead"><h3>Editable service price list</h3><button class="btn" data-add="services">+ Add service</button></div>
+    <div class="tw"><table class="svc">
+      <thead><tr><th>Category / service</th><th>Description</th><th>Treatment min</th><th>Prep min</th><th>Clean min</th><th>Products</th><th>Other direct</th><th>Commission</th><th>Margin %</th><th>Total cost</th><th>Suggested price</th><th>Your price</th><th>Profit</th><th>Your margin</th><th>Action</th></tr></thead>
+      <tbody id="b-services"></tbody>
+    </table></div>
+    <p class="hint">Enter a service's calculated consumable cost from the Costs section in its Products field. Commission is a flat amount per appointment. “Your price” is your editable customer-facing price.</p>
+  </div>
+
+  <div class="cols2">
+    <div class="card" style="margin:0">
+      <h3>A considered pricing strategy</h3>
+      <p class="txt" style="color:var(--muted);margin:12px 0 0">Start with your costs, then assess competitor positioning and the value of your expertise. Packages may encourage repeat visits; promotions should still cover costs. Review prices whenever product, labour, or overhead assumptions change.</p>
+    </div>
+    <div class="card" style="margin:0">
+      <h3>The discount effect</h3>
+      <p class="txt" style="color:var(--muted);margin:12px 0 0">Illustration: a service priced at 500 with a total estimated cost of 300 leaves 200 before a discount. A 10% discount reduces the selling price to 450 and the difference to 150. The example uses currency-neutral numbers; it does not predict your results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 BOOKINGS -->
+<section class="panel" id="p-bookings" hidden>
+  <div class="eyebrow">04 / Appointments</div>
+  <h2>Bookings &amp; revenue</h2>
+  <p class="lede">Record completed services using optional anonymous references—not client names or private details.</p>
+
+  <div class="stats s3">
+    <div class="stat"><span>Booking revenue after discounts</span><strong id="bkRev">–</strong></div>
+    <div class="stat"><span>Booking direct costs</span><strong id="bkDir">–</strong></div>
+    <div class="stat"><span>Estimated contribution</span><strong id="bkCon">–</strong></div>
+  </div>
+
+  <div class="card">
+    <div class="cardhead"><h3>Monthly booking tracker</h3><button class="btn" data-add="bookings">+ Add booking</button></div>
+    <div class="tw"><table style="min-width:860px">
+      <thead><tr><th>Date</th><th>Treatment</th><th>Optional reference</th><th>Service price</th><th>Discount</th><th>Direct costs</th><th>Contribution</th><th>Action</th></tr></thead>
+      <tbody id="b-bookings"></tbody>
+    </table></div>
+    <p class="hint">Contribution = service price − discount − direct costs. Operating expenses are deducted separately in the Review section. Keep all booking rows within the same month when reviewing a month.</p>
+  </div>
+</section>
+
+<!-- 05 GROWTH -->
+<section class="panel" id="p-growth" hidden>
+  <div class="eyebrow">05 / Relationships</div>
+  <h2>Plan the next visit</h2>
+  <p class="lede"></p>
+
+  <div class="cols2" style="margin-bottom:28px">
+    <div class="card" style="margin:0">
+      <h3>Rebooking &amp; retention planner</h3>
+      <div class="f" style="margin-top:14px"><span>Repeat-visit opportunities</span><textarea data-f="repeat" placeholder="Which treatments naturally call for a future visit?"></textarea></div>
+      <div class="f"><span>Follow-up timing</span><textarea data-f="followup" placeholder="When should you check in or suggest rebooking?"></textarea></div>
+      <div class="f"><span>Loyalty &amp; referral ideas</span><textarea data-f="loyalty" placeholder="What could reward an ongoing relationship?"></textarea></div>
+      <div class="f"><span>Client communication plan</span><textarea data-f="commplan" placeholder="Channels, tone, and consent-aware follow-ups"></textarea></div>
+    </div>
+    <div class="card" style="margin:0">
+      <h3>30-day marketing calendar</h3>
+      <p class="sub">A flexible four-week starting point. Edit each plan to fit your salon.</p>
+      <div class="f"><span>Week 1 · Introduce your expertise</span><textarea data-f="wk1">Post idea: behind-the-scenes service preparation. Format: short video. CTA: ask which treatment questions followers have.</textarea></div>
+      <div class="f"><span>Week 2 · Explain a service</span><textarea data-f="wk2">Post idea: what to expect from a first brow appointment. Format: carousel. CTA: invite booking enquiries.</textarea></div>
+      <div class="f"><span>Week 3 · Share useful care advice</span><textarea data-f="wk3">Post idea: aftercare tips for longer-lasting results. Format: graphic. CTA: ask followers to save the tips.</textarea></div>
+      <div class="f"><span>Week 4 · Highlight availability</span><textarea data-f="wk4">Post idea: next month's appointment openings. Format: story. CTA: direct people to your normal booking channel.</textarea></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>90-day growth plan</h3>
+    <div class="grid3" style="margin-top:14px">
+      <div class="f"><span>Days 1–30 · Audit</span><textarea data-f="d30">Review service costs, price list, and most-booked treatments.</textarea></div>
+      <div class="f"><span>Days 31–60 · Improve</span><textarea data-f="d60">Test rebooking conversations and a consistent marketing rhythm.</textarea></div>
+      <div class="f"><span>Days 61–90 · Review</span><textarea data-f="d90">Compare contribution, expenses, and client return opportunities.</textarea></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Customer communication starters</h3>
+    <p class="sub">Personalise details and communicate only through appropriate channels.</p>
+    <div class="comms" id="comms" style="margin-top:16px"></div>
+  </div>
+</section>
+
+<!-- 06 REVIEW -->
+<section class="panel" id="p-review" hidden>
+  <div class="eyebrow">06 / Reflect &amp; refine</div>
+  <h2>Monthly business review</h2>
+  <p class="lede">Use bookings and costs from the same month for a meaningful estimate.</p>
+
+  <div class="stats s4">
+    <div class="stat"><span>Net booking revenue</span><strong id="rvRev">–</strong></div>
+    <div class="stat"><span>Direct booking costs</span><strong id="rvDir">–</strong></div>
+    <div class="stat"><span>Monthly operating expenses</span><strong id="rvExp">–</strong></div>
+    <div class="stat"><span>Estimated profit</span><strong id="rvProfit">–</strong></div>
+  </div>
+  <p class="note">Revenue is sales after discounts. Gross contribution is revenue less recorded direct booking costs. Estimated profit here additionally subtracts the expense tracker total. This is a simplified planning view, not an accounting statement; avoid double-counting direct costs under monthly expenses.</p>
+
+  <div class="card">
+    <h3>Questions worth asking</h3>
+    <div class="grid2" style="margin-top:14px">
+      <div class="f"><span>What worked this month?</span><textarea data-f="worked"></textarea></div>
+      <div class="f"><span>What underperformed?</span><textarea data-f="under"></textarea></div>
+      <div class="f"><span>Which services sold most / contributed most?</span><textarea data-f="topsvc" placeholder="Compare volume and contribution; they may differ."></textarea></div>
+      <div class="f"><span>What will you change next month?</span><textarea data-f="change"></textarea></div>
+    </div>
+    <p class="hint" id="goalNote" style="font-size:13.5px"></p>
+  </div>
+
+  <div class="card">
+    <h3>Final business checklist</h3>
+    <ul class="checks" id="checks"></ul>
+    <p class="prog" id="checkProg">0 of 6 completed</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>Nexora Works · Beauty Builds Confidence · Business Creates Freedom · Stronger Salons Brighter Businesses</span>
+  <button class="reset" id="reset" type="button">Reset toolkit</button>
+</footer>
+
+<script>
+(function(){
+  var KEY='nexora-salon-toolkit-v1';
+  var SYM={ZAR:'R',USD:'$',GBP:'£',EUR:'€',AUD:'A$'};
+  var TABS=['profile','costs','pricing','bookings','growth','review'];
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var esc=function(v){return String(v==null?'':v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')};
+  var n=function(v){var x=parseFloat(v);return isFinite(x)?x:0};
+
+  /* ---------- state ---------- */
+  function defaults(){
+    return {
+      f:{},
+      expenses:[{name:'Rent',amount:'8500'},{name:'Electricity and water',amount:'1800'},{name:'Marketing',amount:'1200'},{name:'Insurance and subscriptions',amount:'750'}],
+      products:[{name:'Professional shampoo',price:'360',qty:'1000',used:'20'},{name:'Nail colour',price:'240',qty:'60',used:'3'}],
+      services:[
+        {name:'Haircut & styling',desc:'Cut and finish',t:'60',p:'10',c:'10',prod:'25',other:'5',comm:'0',m:'35',price:'420'},
+        {name:'Hair colouring',desc:'Colour application and finish',t:'120',p:'15',c:'15',prod:'155',other:'15',comm:'0',m:'35',price:'850'},
+        {name:'Manicure / pedicure',desc:'Classic manicure and polish',t:'45',p:'10',c:'10',prod:'30',other:'5',comm:'0',m:'35',price:'320'},
+        {name:'Gel / acrylic nails',desc:'Gel overlay or acrylic set',t:'75',p:'10',c:'10',prod:'65',other:'10',comm:'0',m:'35',price:'480'},
+        {name:'Lash extensions',desc:'Classic set',t:'100',p:'15',c:'10',prod:'90',other:'10',comm:'0',m:'35',price:'690'},
+        {name:'Brow treatments',desc:'Shape and tint',t:'30',p:'5',c:'5',prod:'20',other:'5',comm:'0',m:'35',price:'250'},
+        {name:'Facials',desc:'Express facial',t:'50',p:'10',c:'10',prod:'75',other:'10',comm:'0',m:'35',price:'490'}
+      ],
+      bookings:[{date:'',treatment:'Haircut & styling',ref:'A01',price:'420',disc:'0',direct:'30'}],
+      checks:[]
+    };
+  }
+  var S;
+  try{S=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){S=null}
+  if(!S||typeof S!=='object')S=defaults();
+  var D=defaults();
+  ['f','expenses','products','services','bookings','checks'].forEach(function(k){if(!S[k])S[k]=D[k]});
+
+  var timer;
+  function save(){clearTimeout(timer);timer=setTimeout(function(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}},300)}
+
+  /* ---------- formatting ---------- */
+  function cur(){return (S.f.currency)||'ZAR'}
+  function fmt(x){
+    return (SYM[cur()]||'')+x.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+
+  /* ---------- row templates ---------- */
+  function inp(k,v,type,ph){
+    type=type||'number';
+    var a=type==='number'?' min="0" step="any" inputmode="decimal"':'';
+    return '<input data-k="'+k+'" type="'+type+'"'+a+(ph?' placeholder="'+ph+'"':'')+' value="'+esc(v)+'">';
+  }
+  var RM='<td><button class="rm" type="button" data-rm>Remove</button></td>';
+  var T={
+    expenses:{blank:function(){return {name:'',amount:''}},
+      row:function(r){return '<td>'+inp('name',r.name,'text')+'</td><td>'+inp('amount',r.amount)+'</td>'+RM}},
+    products:{blank:function(){return {name:'',price:'',qty:'',used:''}},
+      row:function(r){return '<td>'+inp('name',r.name,'text')+'</td><td>'+inp('price',r.price)+'</td><td>'+inp('qty',r.qty)+'</td><td>'+inp('used',r.used)+'</td><td class="out" data-o="cost">–</td>'+RM}},
+    services:{blank:function(){return {name:'',desc:'',t:'',p:'',c:'',prod:'',other:'',comm:'',m:'35',price:''}},
+      row:function(r){return '<td>'+inp('name',r.name,'text')+'</td><td>'+inp('desc',r.desc,'text')+'</td><td>'+inp('t',r.t)+'</td><td>'+inp('p',r.p)+'</td><td>'+inp('c',r.c)+'</td><td>'+inp('prod',r.prod)+'</td><td>'+inp('other',r.other)+'</td><td>'+inp('comm',r.comm)+'</td><td>'+inp('m',r.m)+'</td><td class="out" data-o="cost">–</td><td class="out" data-o="sugg">–</td><td>'+inp('price',r.price)+'</td><td class="out" data-o="profit">–</td><td class="out" data-o="marg">–</td>'+RM}},
+    bookings:{blank:function(){return {date:'',treatment:'',ref:'',price:'',disc:'',direct:''}},
+      row:function(r){return '<td>'+inp('date',r.date,'date')+'</td><td>'+inp('treatment',r.treatment,'text')+'</td><td>'+inp('ref',r.ref,'text')+'</td><td>'+inp('price',r.price)+'</td><td>'+inp('disc',r.disc)+'</td><td>'+inp('direct',r.direct)+'</td><td class="out" data-o="con">–</td>'+RM}}
+  };
+  function render(name){
+    var body=$('#b-'+name);
+    body.innerHTML=S[name].map(function(r,i){return '<tr data-i="'+i+'">'+T[name].row(r)+'</tr>'}).join('');
+  }
+  function setOut(name,i,key,text){
+    var tr=$('#b-'+name).rows[i];
+    if(!tr)return;
+    var el=$('[data-o="'+key+'"]',tr);
+    if(el)el.textContent=text;
+  }
+
+  /* ---------- calculations ---------- */
+  function calc(){
+    var cc=cur(); void cc;
+    var totalExp=S.expenses.reduce(function(a,r){return a+n(r.amount)},0);
+    var bpm=n(S.f.bookingsPM!==undefined?S.f.bookingsPM:100);
+    var ohPer=bpm>0?totalExp/bpm:0;
+    var rate=n(S.f.labourRate!==undefined?S.f.labourRate:120);
+    $('#stExp').textContent=fmt(totalExp);
+    $('#stOH').textContent=fmt(ohPer);
+    $('#stLab').textContent=fmt(rate);
+
+    S.products.forEach(function(r,i){
+      var q=n(r.qty);
+      setOut('products',i,'cost',fmt(q>0?n(r.price)/q*n(r.used):0));
+    });
+
+    S.services.forEach(function(r,i){
+      var labour=(n(r.t)+n(r.p)+n(r.c))/60*rate;
+      var cost=labour+ohPer+n(r.prod)+n(r.other)+n(r.comm);
+      var m=n(r.m);
+      var sugg=m<100?cost/(1-m/100):0;
+      var price=n(r.price),profit=price-cost;
+      setOut('services',i,'cost',fmt(cost));
+      setOut('services',i,'sugg',m<100?fmt(sugg):'—');
+      setOut('services',i,'profit',fmt(profit));
+      setOut('services',i,'marg',price>0?(profit/price*100).toFixed(1)+'%':'—');
+    });
+
+    var rev=0,dir=0;
+    S.bookings.forEach(function(r,i){
+      var net=n(r.price)-n(r.disc);
+      rev+=net;dir+=n(r.direct);
+      setOut('bookings',i,'con',fmt(net-n(r.direct)));
+    });
+    $('#bkRev').textContent=fmt(rev);
+    $('#bkDir').textContent=fmt(dir);
+    $('#bkCon').textContent=fmt(rev-dir);
+
+    $('#rvRev').textContent=fmt(rev);
+    $('#rvDir').textContent=fmt(dir);
+    $('#rvExp').textContent=fmt(totalExp);
+    $('#rvProfit').textContent=fmt(rev-dir-totalExp);
+
+    var goal=n(S.f.goal);
+    $('#goalNote').innerHTML=goal>0
+      ?'Revenue goal progress: <b>'+(rev/goal*100).toFixed(1)+'%</b>. This compares entered booking revenue with the goal in your profile.'
+      :'Enter a monthly revenue goal in your profile to track progress against entered booking revenue.';
+  }
+
+  /* ---------- static fields ---------- */
+  $$('[data-f]').forEach(function(el){
+    var k=el.dataset.f;
+    if(k in S.f)el.value=S.f[k];
+    el.addEventListener('input',function(){S.f[k]=el.value;calc();save()});
+    el.addEventListener('change',function(){S.f[k]=el.value;calc();save()});
+  });
+
+  /* ---------- tables ---------- */
+  ['expenses','products','services','bookings'].forEach(function(name){
+    render(name);
+    var body=$('#b-'+name);
+    body.addEventListener('input',function(e){
+      var el=e.target,k=el.dataset.k,tr=el.closest('tr');
+      if(!k||!tr)return;
+      S[name][+tr.dataset.i][k]=el.value;
+      calc();save();
+    });
+    body.addEventListener('click',function(e){
+      if(!e.target.hasAttribute('data-rm'))return;
+      var tr=e.target.closest('tr');
+      S[name].splice(+tr.dataset.i,1);
+      render(name);calc();save();
+    });
+  });
+  $$('[data-add]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var name=b.dataset.add;
+      S[name].push(T[name].blank());
+      render(name);calc();save();
+      var rows=$('#b-'+name).rows,last=rows[rows.length-1];
+      var first=last&&$('input',last);if(first)first.focus();
+    });
+  });
+
+  /* ---------- message starters ---------- */
+  var MSGS=[
+    ['New booking enquiry','Thanks for your enquiry! Which service and preferred dates are you considering? I can share the available options.'],
+    ['Booking confirmation','Your [service] appointment is booked for [date] at [time]. We look forward to seeing you at [salon].'],
+    ['Appointment reminder','A friendly reminder of your [service] appointment on [date] at [time]. Please let us know if you need to discuss your booking.'],
+    ['Cancellation / rescheduling','Thanks for letting us know. We can look at another available time for your appointment. What dates would suit you?'],
+    ['Post-treatment care','Thank you for visiting [salon]. Here are your personalised aftercare tips: [add accurate guidance for this treatment].'],
+    ['Review request','We hope you enjoyed your visit. If you would like to share your experience, you can leave a review here: [link].'],
+    ['Rebooking reminder','It may be time to plan your next [service]. If you would like another appointment, here is how to book: [details].'],
+    ['Referral invitation','If someone you know is looking for [service], feel free to share our booking details with them: [link].'],
+    ['Promotion announcement','We have an upcoming [offer] on [eligible service] until [date]. Full details and availability: [link].'],
+    ['Price adjustment notice','From [date], our price for [service] will be [price]. Thank you for supporting our salon; please contact us with any questions.']
+  ];
+  $('#comms').innerHTML=MSGS.map(function(m,i){
+    return '<div class="msg"><h4>'+m[0]+'</h4><p>'+m[1]+'</p><button class="btn" type="button" data-copy="'+i+'">Copy message</button></div>';
+  }).join('');
+  $('#comms').addEventListener('click',function(e){
+    var b=e.target.closest('[data-copy]');if(!b)return;
+    var text=MSGS[+b.dataset.copy][1];
+    function done(){var o=b.textContent;b.textContent='Copied';setTimeout(function(){b.textContent=o},1500)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done,fallback)}else fallback();
+    function fallback(){
+      var t=document.createElement('textarea');t.value=text;t.style.position='fixed';t.style.opacity='0';
+      document.body.appendChild(t);t.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(t);
+    }
+  });
+
+  /* ---------- checklist ---------- */
+  var CHECKS=['Product and consumable costs are up to date.','Treatment, preparation, and cleaning time are included.','Price list reflects current costs and positioning.','Appointment follow-ups and rebooking opportunities are planned.','Expenses and bookings have been reviewed for the same month.','Marketing activity and next month\'s priorities are recorded.'];
+  $('#checks').innerHTML=CHECKS.map(function(t,i){
+    return '<li><label><input type="checkbox" data-c="'+i+'"'+(S.checks[i]?' checked':'')+'><span>'+t+'</span></label></li>';
+  }).join('');
+  function prog(){$('#checkProg').textContent=S.checks.filter(Boolean).length+' of '+CHECKS.length+' completed'}
+  $('#checks').addEventListener('change',function(e){
+    var i=e.target.dataset.c;if(i===undefined)return;
+    S.checks[+i]=e.target.checked;prog();save();
+  });
+  prog();
+
+  /* ---------- tabs ---------- */
+  function show(t,scroll){
+    if(TABS.indexOf(t)<0)t='profile';
+    TABS.forEach(function(x){$('#p-'+x).hidden=x!==t});
+    $$('nav.tabs button').forEach(function(b){b.setAttribute('aria-selected',b.dataset.t===t?'true':'false')});
+    try{history.replaceState(null,'','#'+t)}catch(e){}
+    if(scroll){var top=document.querySelector('nav.tabs').offsetTop;window.scrollTo({top:top,behavior:'auto'})}
+  }
+  $$('nav.tabs button').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.t,true)})});
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1),false)});
+
+  $('#reset').addEventListener('click',function(){
+    if(!confirm('Reset the whole toolkit to its starting values? Your saved entries will be removed.'))return;
+    try{localStorage.removeItem(KEY)}catch(e){}
+    location.reload();
+  });
+
+  show(location.hash.slice(1),false);
+  calc();
+})();
+</script>
+</body>
+</html>
